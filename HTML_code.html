@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luchas - Index</title>
+    <link rel="stylesheet" href="./CSS_code.css">
+</head>
+<body>
+    <input type="hidden" id="hidden-finish" value="0">
+    <input type="hidden" id="hidden-input" value="0">
+    <input type="hidden" id="usuario_id" value="">
+    
+    <audio id="background-music" src="./Pokemon_opening.mp3" loop></audio>
+
+    <div class="battle-info">
+        <div id="pokemon1-lives">Vidas Jugador 1: <span id="pokemon1-lives-count">10</span></div>
+        <div id="battle-timer">Tiempo restante: <span id="timer-count">60</span> s</div>
+        <div id="pokemon2-lives">Vidas Jugador 2: <span id="pokemon2-lives-count">10</span></div>
+    </div>
+
+    <div class="center-button">
+        <button id="start-battle">Iniciar Batalla</button>
+    </div>
+
+    <div id="battle-area">
+        <img id="pokemon1" src="" alt="Pokemon 1">
+        <img id="pokemon2" src="" alt="Pokemon 2">
+    </div>
+    
+
+    <div class="players-container">
+        <div class="player" id="player1">
+            <p>Anfitrión: <span id="host-name"></span></p>
+            <div class="scrollable-table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sprite</th>
+                            <th>Nombre</th>
+                            <th>Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pokemon-list-1"></tbody>
+                </table>
+            </div>
+        </div>
+        
+        <div class="player" id="player2">
+            <p>Retador: <span id="challenger-name"></span></p>
+            <div class="scrollable-table-container">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Sprite</th>
+                            <th>Nombre</th>
+                            <th>Elegir</th>
+                        </tr>
+                    </thead>
+                    <tbody id="pokemon-list-2"></tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    
+    
+    
+    
+    <script src="./JS_code.js"></script>
+</body>
+</html>
