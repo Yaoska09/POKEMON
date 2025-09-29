@@ -194,33 +194,9 @@ function checkBattleOutcome() {
         const idUsuario = usuario_id.value;
         const idPkm = hiddenInput.value;  
 
-        const url = `https://localhost:7068/Api_Pdx_DbV2/UsuarioPkm/AgregarPkm/${idUsuario}/${idPkm}/3`;
+        
 
-        fetch(url, {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                id: 0,
-                idUsuario: idUsuario,
-                pkm_id: idPkm,
-                nombre: `${loser} perdió contra ${winner}`,
-                estado: 3,
-            }),
-        })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error(`HTTP error! Status: ${response.status}`);
-                }
-                return response.json();
-            })
-            .then(data => {
-                console.log('Resultado guardado:', data);
-            })
-            .catch(error => {
-                console.error('Error al guardar el resultado:', error);
-            });
+        
     }
 }
 
