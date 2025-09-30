@@ -83,7 +83,7 @@ body {
     border: 3px solid;
     border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1) 1;
     margin: 20px auto;
-    background-image: url('./fondo_estadio.jpg');
+    background-image: url('../IMAGES/fondo_estadio.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
@@ -91,13 +91,26 @@ body {
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
 }
-
-#battle-area::before {
-    content: '';
+.pokeball-bg {
     position: absolute;
-    top: 0; left: 0; right: 0; bottom: 0;
-    background: rgba(0, 0, 0, 0.2);
-    z-index: 1;
+    width: 80px;        /* Más grande para que se vea */
+    height: 80px;
+    opacity: 0.7;
+    z-index: 1;         /* Debajo de los Pokémon */
+}
+
+
+#battle-area {
+    position: relative;
+    width: 900px;
+    height: 500px;
+    margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    background-image: url('../IMAGES/fondo_estadio.jpg'); /* Fondo corregido */
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
 }
 
 #pokemon1, #pokemon2 {

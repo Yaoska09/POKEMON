@@ -294,7 +294,7 @@ startBattleButton.addEventListener('click', () => {
     }, 1000);
     });
 
-    document.addEventListener('keydown', function (event) {
+   document.addEventListener('keydown',  function (event) {
     if (!battleStarted) return;  // Aquí evitamos movimientos si no empezó la batalla
 
     const key = event.key;
