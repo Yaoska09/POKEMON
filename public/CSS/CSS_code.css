@@ -84,24 +84,20 @@ body {
     border-radius: 20px;
     overflow: hidden;
     box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-
-    /* Fondo del estadio */
     background-image: url('../IMAGES/fondo_estadio.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-
-    /* Borde degradado animado */
     border: 5px solid;
     border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ffeaa7) 1;
     transition: border 0.3s ease;
 }
 .pokeball-bg {
     position: absolute;
-    width: 80px;        /* Más grande para que se vea */
+    width: 80px;       
     height: 80px;
     opacity: 0.7;
-    z-index: 1;         /* Debajo de los Pokémon */
+    z-index: 1;         
 }
 
 
