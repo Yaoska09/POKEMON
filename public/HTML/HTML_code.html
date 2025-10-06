@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -7,11 +8,14 @@
 
     <!-- Tailwind y Google Fonts -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap" rel="stylesheet" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
 
     <!-- CSS -->
     <link rel="stylesheet" href="../CSS/CSS_code.css" />
 </head>
+
 <body>
     <!-- Inputs ocultos -->
     <input type="hidden" id="hidden-finish" value="0" />
@@ -35,7 +39,8 @@
                 <div class="life-container w-40">
                     <div id="pokemon1-life-bar" class="life-bar" style="width: 100%;"></div>
                 </div>
-                <p class="mt-2">Vidas: <span id="pokemon1-lives-count" class="font-bold text-2xl text-green-400">20</span></p>
+                <p class="mt-2">Vidas: <span id="pokemon1-lives-count"
+                        class="font-bold text-2xl text-green-400">20</span></p>
             </div>
 
             <div class="text-center">
@@ -50,34 +55,30 @@
                 <div class="life-container w-40">
                     <div id="pokemon2-life-bar" class="life-bar" style="width: 100%;"></div>
                 </div>
-                <p class="mt-2">Vidas: <span id="pokemon2-lives-count" class="font-bold text-2xl text-green-400">20</span></p>
+                <p class="mt-2">Vidas: <span id="pokemon2-lives-count"
+                        class="font-bold text-2xl text-green-400">20</span></p>
             </div>
         </div>
     </div>
 
     <!-- Start & Reset Buttons -->
     <div class="text-center my-8 space-x-4">
-        <button id="start-battle" class="start-btn px-12 py-4 text-2xl font-bold rounded-full border-2 border-white/30 relative z-10">
+        <button id="start-battle"
+            class="start-btn px-12 py-4 text-2xl font-bold rounded-full border-2 border-white/30 relative z-10">
             🚀 INICIAR BATALLA
         </button>
-        <button id="resetGameButton" class="reset-btn px-10 py-3 text-xl font-semibold rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition hidden">
+        <button id="resetGameButton"
+            class="reset-btn px-10 py-3 text-xl font-semibold rounded-full border-2 border-red-500 text-red-500 hover:bg-red-500 hover:text-white transition hidden">
             🔄 Reiniciar Juego
         </button>
     </div>
 
-    <!-- Battle Area -->
-   <!-- Battle Area -->
-<div id="battle-area">
-    <img id="pokemon1" src="" alt="Pokemon 1" />
-    <img id="pokemon2" src="" alt="Pokemon 2" />
 
-    <!-- Pokébolas de fondo -->
-    <img src="../IMAGES/pokeball.png" class="pokeball-bg" style="top: 20px; left: 50px;">
-    <img src="../IMAGES/pokeball.png" class="pokeball-bg" style="top: 120px; left: 300px;">
-    <img src="../IMAGES/pokeball.png" class="pokeball-bg" style="top: 250px; left: 600px;">
-    <img src="../IMAGES/pokeball.png" class="pokeball-bg" style="top: 350px; left: 150px;">
-    <img src="../IMAGES/pokeball.png" class="pokeball-bg" style="top: 50px; left: 700px;">
-</div>
+    <!-- Battle Area -->
+    <div id="battle-area" class="battle-area">
+        <img id="pokemon1" src="../IMAGES/pokeball.png" alt="Pokemon 1" />
+        <img id="pokemon2" src="../IMAGES/pokeball.png" alt="Pokemon 2" />
+    </div>
 
 
     <!-- Controls Info -->
@@ -85,12 +86,14 @@
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-center">
             <div>
                 <h3 class="text-xl font-bold mb-3 text-blue-300">🎮 Jugador 1</h3>
-                <p class="mb-2">Movimiento: <span class="control-key">W</span><span class="control-key">A</span><span class="control-key">S</span><span class="control-key">D</span></p>
+                <p class="mb-2">Movimiento: <span class="control-key">W</span><span class="control-key">A</span><span
+                        class="control-key">S</span><span class="control-key">D</span></p>
                 <p>Atacar: <span class="control-key">Q</span></p>
             </div>
             <div>
                 <h3 class="text-xl font-bold mb-3 text-red-300">🎮 Jugador 2</h3>
-                <p class="mb-2">Movimiento: <span class="control-key">↑</span><span class="control-key">←</span><span class="control-key">↓</span><span class="control-key">→</span></p>
+                <p class="mb-2">Movimiento: <span class="control-key">↑</span><span class="control-key">←</span><span
+                        class="control-key">↓</span><span class="control-key">→</span></p>
                 <p>Atacar: <span class="control-key">Enter</span></p>
             </div>
         </div>
@@ -103,7 +106,8 @@
             <div class="player-section">
                 <div class="text-center mb-6">
                     <h2 class="text-3xl font-bold text-blue-300 mb-2">🏆 Anfitrión</h2>
-                    <p class="text-lg text-gray-300">Nombre: <span id="host-name" class="font-semibold text-blue-400">Jugador 1</span></p>
+                    <p class="text-lg text-gray-300">Nombre: <span id="host-name"
+                            class="font-semibold text-blue-400">Jugador 1</span></p>
                 </div>
                 <div class="scrollable-container">
                     <div id="pokemon-grid-1" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
@@ -114,7 +118,8 @@
             <div class="player-section">
                 <div class="text-center mb-6">
                     <h2 class="text-3xl font-bold text-red-300 mb-2">⚔️ Retador</h2>
-                    <p class="text-lg text-gray-300">Nombre: <span id="challenger-name" class="font-semibold text-red-400">Jugador 2</span></p>
+                    <p class="text-lg text-gray-300">Nombre: <span id="challenger-name"
+                            class="font-semibold text-red-400">Jugador 2</span></p>
                 </div>
                 <div class="scrollable-container">
                     <div id="pokemon-grid-2" class="grid grid-cols-1 sm:grid-cols-2 gap-4"></div>
@@ -127,4 +132,5 @@
     <script src="../JS/JS_code.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 </body>
+
 </html>

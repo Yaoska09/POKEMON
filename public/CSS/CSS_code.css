@@ -80,16 +80,21 @@ body {
     position: relative;
     width: 900px;
     height: 500px;
-    border: 3px solid;
-    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1) 1;
     margin: 20px auto;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    /* Fondo del estadio */
     background-image: url('../IMAGES/fondo_estadio.jpg');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    border-radius: 20px;
-    overflow: hidden;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+
+    /* Borde degradado animado */
+    border: 5px solid;
+    border-image: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ffeaa7) 1;
+    transition: border 0.3s ease;
 }
 .pokeball-bg {
     position: absolute;
@@ -100,18 +105,7 @@ body {
 }
 
 
-#battle-area {
-    position: relative;
-    width: 900px;
-    height: 500px;
-    margin: 20px auto;
-    border-radius: 20px;
-    overflow: hidden;
-    background-image: url('../IMAGES/fondo_estadio.jpg'); /* Fondo corregido */
-    background-size: cover;
-    background-position: center;
-    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-}
+
 
 #pokemon1, #pokemon2 {
     position: absolute;
@@ -275,4 +269,80 @@ body {
 .reset-btn:hover {
     background: #e74c3c;
     color: white;
+}
+
+/* ===== Tablets ===== */
+@media (max-width: 1024px) {
+    #battle-area {
+        width: 80%;
+        height: 400px;
+    }
+
+    #pokemon1, #pokemon2 {
+        width: 100px;
+        height: 100px;
+    }
+
+    .pokeball-bg {
+        width: 60px;
+        height: 60px;
+    }
+
+    .start-btn, .reset-btn {
+        font-size: 1.5rem;
+        padding: 12px 24px;
+    }
+
+    .title-glow {
+        font-size: 4rem;
+    }
+
+    .scrollable-container {
+        max-height: 300px;
+    }
+}
+
+/* ===== Móviles ===== */
+@media (max-width: 640px) {
+    #battle-area {
+        width: 95%;
+        height: 250px;
+    }
+
+    #pokemon1, #pokemon2 {
+        width: 80px;
+        height: 80px;
+    }
+
+    .pokeball-bg {
+        width: 50px;
+        height: 50px;
+    }
+
+    .start-btn, .reset-btn {
+        width: 90%;
+        font-size: 1.2rem;
+        padding: 10px 20px;
+    }
+
+    .title-glow {
+        font-size: 2rem;
+    }
+
+    .battle-stats .life-container {
+        width: 100px;
+    }
+
+    .controls-info {
+        padding: 8px;
+        font-size: 0.9rem;
+    }
+
+    .scrollable-container {
+        max-height: 200px;
+    }
+
+    .player-section {
+        padding: 10px;
+    }
 }

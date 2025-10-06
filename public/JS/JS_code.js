@@ -42,11 +42,30 @@ function getInitialPositions() {
     const battleAreaWidth = battleArea.offsetWidth;
     const battleAreaHeight = battleArea.offsetHeight;
 
+    // Tamaño relativo de los Pokémon según battleArea
+    const pokemonWidth = battleAreaWidth * 0.08;  // 8% del ancho del battleArea
+    const pokemonHeight = battleAreaHeight * 0.24; // 24% del alto del battleArea
+    const separation = battleAreaWidth * 0.25;    // 25% del ancho como separación
+
+    // Centro del battleArea
+    const centerX = battleAreaWidth / 2;
+    const centerY = battleAreaHeight / 2;
+
     return {
-        pokemon1Position: { x: 100, y: battleAreaHeight / 2 - 60 },
-        pokemon2Position: { x: battleAreaWidth - 220, y: battleAreaHeight / 2 - 60 }
+        pokemon1Position: {
+            x: centerX - (separation / 2) - (pokemonWidth * 2), // izquierda del centro
+            y: centerY - (pokemonHeight / 2)           // centrado verticalmente
+        },
+        pokemon2Position: {
+            x: centerX + (separation/2), // derecha del centro
+            y: centerY - (pokemonHeight / 2)                // centrado verticalmente
+        }
     };
 }
+
+
+
+
 function updateLifeBar(pokemonNumber, lives) {
     const percentage = (lives / 20) * 100;
     if (pokemonNumber === 1) {
@@ -66,8 +85,8 @@ document.addEventListener('DOMContentLoaded', () => {
     pokemon2.style.left = pokemon2Position.x + 'px';
     pokemon2.style.top = pokemon2Position.y + 'px';
 
-    pokemon1.src = `./pokeball.png`;
-    pokemon2.src = `./pokeball.png`;
+    pokemon1.src = `../IMAGES/pokeball.png`;
+    pokemon2.src = `../IMAGES/pokeball.png`;
 
     cargarPokemon('pokemon-grid-1', asignarPokemon1);
     cargarPokemon('pokemon-grid-2', asignarPokemon2);
@@ -294,7 +313,7 @@ startBattleButton.addEventListener('click', () => {
     }, 1000);
     });
 
-   document.addEventListener('keydown',  function (event) {
+    document.addEventListener('keydown', function (event) {
     if (!battleStarted) return;  // Aquí evitamos movimientos si no empezó la batalla
 
     const key = event.key;
