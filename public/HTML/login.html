@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Pokémon</title>
+
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Exo+2:wght@300;400;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="../CSS/login.css" />
+</head>
+
+<body>
+    <!-- Música de fondo -->
+    <audio id="background-music" src="../AUDIO/Pokemon_opening.mp3" autoplay loop></audio>
+    <div class="pokemon-login-area">
+        <img id="login-pokemon1" src="../IMAGES/pokeball.png" alt="Pokébola 1">
+        <img id="login-pokemon2" src="../IMAGES/pokeball.png" alt="Pokébola 2">
+    </div>
+
+
+   <div class="login-container">
+    <h1 class="title-glow">POKÉMON LOGIN</h1>
+
+    <!-- Área de Pokébolas animadas -->
+    <div class="pokemon-login-area">
+        <img id="login-pokemon1" src="../IMAGES/pokeball.png" alt="Pokébola 1">
+        <img id="login-pokemon2" src="../IMAGES/pokeball.png" alt="Pokébola 2">
+    </div>
+
+    <!-- Formulario para los nombres -->
+    <form id="login-form">
+        <input type="text" id="player1" placeholder="Nombre Jugador 1" required />
+        <input type="text" id="player2" placeholder="Nombre Jugador 2" required />
+        <button type="submit" class="start-btn">¡Comenzar Batalla!</button>
+    </form>
+
+    <p id="error-msg"></p>
+</div>
+
+
+    <script src="../JS/login.js"></script>
+</body>
+
+</html>
