@@ -29,6 +29,19 @@ let timerInterval;
 const hiddenInput = document.getElementById('hidden-input');
 const hiddenFinish = document.getElementById('hidden-finish');
 
+// Obtener referencias a los elementos de nombre de jugador
+const jugador1NombreEl = document.querySelector(".battle-stats div:nth-child(1) h3");
+const jugador2NombreEl = document.querySelector(".battle-stats div:nth-child(3) h3");
+
+// Obtener nombres desde localStorage
+const jugador1Nombre = localStorage.getItem('jugador1') || "Jugador1";
+const jugador2Nombre = localStorage.getItem('jugador2') || "Jugador2";
+
+// Asignar los nombres al HTML
+jugador1NombreEl.textContent = jugador1Nombre;
+jugador2NombreEl.textContent = jugador2Nombre;
+
+
 const battleAreaBounds = {
     width: battleArea.offsetWidth,
     height: battleArea.offsetHeight
