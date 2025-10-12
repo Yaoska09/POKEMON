@@ -1,37 +1,41 @@
-// Datos de ejemplo (puedes reemplazar por base de datos después)
-const validUser = "Ash";
-const validPassword = "pikachu";
-
+let jugadoresConectados = 0;
 const form = document.getElementById('login-form');
 const errorMsg = document.getElementById('error-msg');
+const playerNameInput = document.getElementById('playerName');
+const playerStatus = document.getElementById('player-status');
 
-form.addEventListener('submit', function(e){
+form.addEventListener('submit', function (e) {
     e.preventDefault();
+    const nombreJugador = playerNameInput.value.trim();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
-
-    if(username === validUser && password === validPassword){
-        // Usuario correcto, redirigir al juego
-        window.location.href = '../HTML/index.html';
-    } else {
-        errorMsg.textContent = "Usuario o contraseña incorrectos 😢";
+    if (!nombreJugador || nombreJugador.length < 2) {
+        errorMsg.textContent = "⚠️ Ingresa un nombre válido (mín. 2 caracteres)";
+        return;
     }
+
+    realizarLogin(nombreJugador);
 });
 
-// Reproducir música de fondo automáticamente
+function realizarLogin(nombreJugador) {
+    errorMsg.textContent = "";
+    const startBtn = document.querySelector('.start-btn');
+    if (jugadoresConectados == 0) {
+        jugadoresConectados++;
+        localStorage.setItem('jugador1', nombreJugador.toString());
+        startBtn.textContent = "🎮 Esperando jugador 2 ";
+        playerNameInput.value = "";
+    }
+    else if (jugadoresConectados == 1) {
+        jugadoresConectados++;
+        localStorage.setItem('jugador2', nombreJugador.toString());
+        startBtn.textContent = "¡Ambos jugadores listos! Redirigiendo...";
+        // Redirigir al juego después de un pequeño retraso si ambos jugadores están listos
+        setTimeout(() => {
+            window.location.href = '/HTML/HTML_code.html'; 
+        }, 500 ); 
+    }
+}
+// Música de fondo
 const music = document.getElementById('background-music');
-music.volume = 0.5; // volumen al 50%
-music.play().catch(() => {
-    // Si el navegador bloquea autoplay, no pasa nada
-});
-window.addEventListener('load', () => {
-    const poke1 = document.getElementById('login-pokemon1');
-    const poke2 = document.getElementById('login-pokemon2');
-
-    // Animación al cargar
-    setTimeout(() => {
-        poke1.classList.add('centered');
-        poke2.classList.add('centered2');
-    }, 200); // pequeño retraso para que se vea más bonito
-});
+music.volume = 0.3;
+music.play();

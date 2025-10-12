@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -12,39 +11,38 @@
         rel="stylesheet" />
 
     <!-- CSS -->
-    <link rel="stylesheet" href="../CSS/login.css" />
+    <link rel="stylesheet" href="/CSS/login.css" />
 </head>
-
 <body>
     <!-- Música de fondo -->
-    <audio id="background-music" src="../AUDIO/Pokemon_opening.mp3" autoplay loop></audio>
-    <div class="pokemon-login-area">
-        <img id="login-pokemon1" src="../IMAGES/pokeball.png" alt="Pokébola 1">
-        <img id="login-pokemon2" src="../IMAGES/pokeball.png" alt="Pokébola 2">
+    <audio id="background-music" src="/AUDIO/Pokemon_opening.mp3" autoplay loop></audio>
+
+    <div class="login-container">
+        <h1 class="title-glow">POKÉMON BATTLE</h1>
+
+        <!-- Área de Pokébolas animadas -->
+        <div class="pokemon-login-area">
+            <img id="login-pokemon1" src="/IMAGES/pokeball.png" alt="Pokébola 1">
+            <img id="login-pokemon2" src="/IMAGES/pokeball.png" alt="Pokébola 2">
+          
+
+        </div>
+
+        <!-- Formulario de login -->
+        <form id="login-form">
+            <input type="text" id="playerName" placeholder="Ingresa tu nombre de Entrenador" required />
+            <button type="submit" class="start-btn">¡Comenzar Aventura!</button>
+        </form>
+          <p id="player-status">Esperando a que el segundo jugador se conecte...</p>
+
+        <p id="error-msg"></p>
+
+        <div class="info-message">
+            <p>✨ El primer entrenador en ingresar será el <strong>Jugador 1</strong></p>
+        </div>
     </div>
 
-
-   <div class="login-container">
-    <h1 class="title-glow">POKÉMON LOGIN</h1>
-
-    <!-- Área de Pokébolas animadas -->
-    <div class="pokemon-login-area">
-        <img id="login-pokemon1" src="../IMAGES/pokeball.png" alt="Pokébola 1">
-        <img id="login-pokemon2" src="../IMAGES/pokeball.png" alt="Pokébola 2">
-    </div>
-
-    <!-- Formulario para los nombres -->
-    <form id="login-form">
-        <input type="text" id="player1" placeholder="Nombre Jugador 1" required />
-        <input type="text" id="player2" placeholder="Nombre Jugador 2" required />
-        <button type="submit" class="start-btn">¡Comenzar Batalla!</button>
-    </form>
-
-    <p id="error-msg"></p>
-</div>
-
-
-    <script src="../JS/login.js"></script>
+    <!-- <script src="/socket.io/socket.io.js"></script>-->
+    <script src="/JS/login.js"></script>
 </body>
-
 </html>

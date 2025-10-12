@@ -1,39 +1,54 @@
-//require('dotenv').config();
 const express = require('express');
-const multer = require('multer');
+const http = require('http');
+const socketIO = require('socket.io');
+const path = require('path');
 
 const app = express();
-const path = require('path');
-//const loginRoutes = require('./routes/loginRoutes');
+const server = http.createServer(app);
+const io = socketIO(server);
+const jugadores = {}; // { socketId: { jugador: 1 o 2, nombre: "..." } }
 
 
 const PORT = process.env.PORT || 4000;
 
-// Middleware
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
-
-// Servir archivos estáticos (solo para frontend)
+// Servir todos los archivos dentro de /public
 app.use(express.static(path.join(__dirname, 'public')));
 
-// Rutas API
-//app.use('/api/login', loginRoutes);
-
-
-// Ruta principal
+// Página principal
 app.get('/', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-// Manejo de errores (incluye errores de Multer)
-app.use((err, req, res, next) => {
-  if (err instanceof multer.MulterError) {
-    return res.status(400).json({ error: err.message });
-  }
-  console.error(err.stack);
-  res.status(500).json({ error: 'Error interno del servidor' });
+// Manejo de sockets
+io.on('connection', (socket) => {
+    console.log('🎮 Nuevo entrenador conectado:', socket.id);
+
+   socket.on('jugador-login', (datosJugador) => {
+    const numJugadores = Object.keys(jugadores).length;
+
+    if (numJugadores < 2) {
+        const jugadorNum = numJugadores + 1;
+        jugadores[socket.id] = { jugador: jugadorNum, nombre: datosJugador.nombre };
+
+        socket.emit('asignar-jugador', { jugador: jugadorNum, nombre: datosJugador.nombre });
+
+        // Notificar a todos los jugadores los nombres actuales
+        const nombresActuales = Object.values(jugadores).map(j => j.nombre);
+        io.emit('actualizar-nombres', nombresActuales);
+
+        console.log(`✅ ${datosJugador.nombre} es Jugador ${jugadorNum}`);
+    } else {
+        socket.emit('error-login', { mensaje: 'Sala llena (máx 2 jugadores)' });
+    }
 });
 
-app.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+
+    socket.on('disconnect', () => {
+        console.log('❌ Entrenador desconectado:', socket.id);
+    });
+});
+
+// Iniciar servidor
+server.listen(PORT, () => {
+    console.log(`⚡ Servidor Pokémon ejecutándose en: http://localhost:${PORT}`);
 });
