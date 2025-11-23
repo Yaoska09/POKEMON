@@ -70,7 +70,7 @@ function getInitialPositions() {
             y: centerY - (pokemonHeight / 2)           // centrado verticalmente
         },
         pokemon2Position: {
-            x: centerX + (separation/2), // derecha del centro
+            x: centerX + (separation / 2), // derecha del centro
             y: centerY - (pokemonHeight / 2)                // centrado verticalmente
         }
     };
@@ -102,7 +102,7 @@ document.addEventListener('DOMContentLoaded', () => {
     pokemon2.src = `../IMAGES/pokeball.png`;
 
     cargarPokemon('pokemon-grid-1', asignarPokemon1);
-    cargarPokemon('pokemon-grid-2', asignarPokemon2);
+
 });
 
 function asignarPokemon1(id, card) {
@@ -115,6 +115,10 @@ function asignarPokemon1(id, card) {
     }
     selectedPokemon1Card = card;
     card.classList.add('selected-pokemon');
+
+    // 💥 Pokémon aleatorio para jugador 2
+    const randomIndex = Math.floor(Math.random() * 1025) + 1;
+    asignarPokemon2(randomIndex, null); // ⚠ mandamos el número aleatorio
 }
 
 function asignarPokemon2(id, card) {
@@ -125,9 +129,13 @@ function asignarPokemon2(id, card) {
     if (selectedPokemon2Card) {
         selectedPokemon2Card.classList.remove('selected-pokemon');
     }
-    selectedPokemon2Card = card;
-    card.classList.add('selected-pokemon');
+
+    if (card) { // ⚠ solo marcamos si viene una carta visual
+        selectedPokemon2Card = card;
+        card.classList.add('selected-pokemon');
+    }
 }
+
 
 function updateLifeBar(pokemonNumber, lives) {
     const percentage = (lives / 20) * 100;
@@ -240,7 +248,7 @@ function checkBattleOutcome() {
         battleArea.appendChild(resultMessage);
 
         const idUsuario = usuario_id.value;
-        const idPkm = hiddenInput.value;  
+        const idPkm = hiddenInput.value;
 
         const url = `https://localhost:7068/Api_Pdx_DbV2/UsuarioPkm/AgregarPkm/${idUsuario}/${idPkm}/3`;
 
@@ -324,9 +332,9 @@ startBattleButton.addEventListener('click', () => {
             checkBattleOutcome();
         }
     }, 1000);
-    });
+});
 
-    document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', function (event) {
     if (!battleStarted) return;  // Aquí evitamos movimientos si no empezó la batalla
 
     const key = event.key;
@@ -365,9 +373,9 @@ startBattleButton.addEventListener('click', () => {
     pokemon1.style.top = pokemon1Position.y + 'px';
     pokemon2.style.left = pokemon2Position.x + 'px';
     pokemon2.style.top = pokemon2Position.y + 'px';
-     });
-     
-     ////////
+});
+
+////////
 
 
 
@@ -419,7 +427,7 @@ document.getElementById('resetGameButton').addEventListener('click', () => {
 
     // Quitar mensaje de resultado
     const resultMessage = document.querySelector('#battle-area > div');
-    if(resultMessage) {
+    if (resultMessage) {
         resultMessage.remove();
     }
 
